@@ -1,0 +1,62 @@
+[
+    {
+        "title": "pizza",
+        "amount": 1000.0,
+        "date": "2026-05-22 06:36:10",
+        "category": "Food"
+    },
+    {
+        "title": "movie",
+        "amount": 800.0,
+        "date": "2026-05-22 06:36:21",
+        "category": "Entertainment"
+    },
+    {
+        "title": "uber",
+        "amount": 300.0,
+        "date": "2026-06-21 06:36:31",
+        "category": "Travel"
+    },
+    {
+        "title": "dosa",
+        "amount": 1000.0,
+        "date": "2026-06-21 06:36:10",
+        "category": "Food"
+    },
+    {
+        "title": "ola",
+        "amount": 300.0,
+        "date": "2026-07-15 06:36:31",
+        "category": "Travel"
+    },
+    {
+        "title": "burger",
+        "amount": 700.0,
+        "date": "2026-07-22 06:36:10",
+        "category": "Food"
+    },
+    {
+        "title": "movie",
+        "amount": 800.0,
+        "date": "2026-08-22 06:36:21",
+        "category": "Entertainment"
+    },
+    {
+        "title": "uber",
+        "amount": 300.0,
+        "date": "2026-08-21 06:36:31",
+        "category": "Travel"
+    },
+    {
+        "title": "samosa",
+        "amount": 50.0,
+        "date": "2026-05-21 06:36:10",
+        "category": "Food"
+    },
+    {
+        "title": "flight",
+        "amount": 4000.0,
+        "date": "2026-08-15 06:36:31",
+        "category": "Travel"
+    }
+]
