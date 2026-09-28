@@ -1,13 +1,18 @@
 # Expense Tracker
 
-A Python CLI-based Expense Tracker application to manage and analyze daily expenses efficiently.
+A Python-based Expense Tracker application with both a **CLI interface and a Flask web application** for managing and analyzing daily expenses.
 
 This project helps users:
-- Track expenses
-- Categorize spending automatically
-- Generate reports
-- Export expense data
-- Visualize spending patterns
+
+* Add, manage, and track expenses
+* Categorize and organize spending
+* View expenses through a web-based dashboard
+* Generate expense reports
+* Store and manage expense data using SQLite
+* Export expense data
+* Visualize spending patterns and expense summaries
+* Manage expenses through an interactive Flask web interface
+
 
 ---
 
