@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+Token_for_Git.txt
+
+*.db
+!web_app/expenses.db
+
+*.log
+.env
