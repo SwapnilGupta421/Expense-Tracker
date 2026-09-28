@@ -2,6 +2,9 @@ __pycache__/
 *.pyc
 Token_for_Git.txt
 
+expense_report.csv
+expense_chart.png
+
 *.db
 !web_app/expenses.db
 
