@@ -58,5 +58,29 @@
         "amount": 4000.0,
         "date": "2026-08-15 06:36:31",
         "category": "Travel"
+    },
+    {
+        "title": "pizza",
+        "amount": 600.0,
+        "date": "2026-05-29 11:01:40",
+        "category": "Food"
+    },
+    {
+        "title": "uber",
+        "amount": 300.0,
+        "date": "2026-05-29 11:01:50",
+        "category": "Travel"
+    },
+    {
+        "title": "pizza",
+        "amount": 300.0,
+        "date": "2026-09-28 14:20:41",
+        "category": "Food"
+    },
+    {
+        "title": "travel",
+        "amount": 1000.0,
+        "date": "2026-09-28 14:20:59",
+        "category": "Others"
     }
 ]

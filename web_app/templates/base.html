@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="brand">
+                <img src="{{ url_for('static', filename='ET_logo.png') }}" alt="Expense Tracker" class="logo">
+                Expense Tracker
+            </a>
+            <div class="nav-links">
+                {% if session.get('user_id') %}
+                    <a href="/">Dashboard</a>
+                    <a href="/all">All Expenses</a>
+                    <a href="/add">Add Expense</a>
+                    <a href="/logout">Logout</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

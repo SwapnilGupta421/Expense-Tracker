@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+Token_for_Git.txt
+web_app/.env

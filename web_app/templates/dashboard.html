@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-layout">
+        <div class="dashboard-left">
+    <section class="search-section">
+        <h2>Search Expenses</h2>
+        <form method="GET" action="/search">
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="q">Keyword</label>
+                    <input type="text" id="q" name="q" placeholder="Search notes..."
+                           value="{{ search_q }}">
+                </div>
+                <div class="search-field">
+                    <label for="search_category">Category</label>
+                    <select id="search_category" name="category">
+                        <option value="">All</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat }}" {% if search_category == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="month">Month</label>
+                    <input type="month" id="month" name="month" value="{{ search_month }}">
+                </div>
+                <div class="search-field">
+                    <label for="year">Year</label>
+                    <select id="year" name="year">
+                        <option value="">All</option>
+                        {% for y in available_years %}
+                        <option value="{{ y }}" {% if search_year == y %}selected{% endif %}>{{ y }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">Search</button>
+                {% if search_q or search_category or search_month or search_year %}
+                <a href="/" class="clear-btn">Clear</a>
+                {% endif %}
+            </div>
+        </form>
+    </section>
+
+    <div class="summary-chart-row">
+        <div class="summary-chart-col">
+            {% if show_all %}
+            <section class="summary-section grand-total">
+                <h2>All Expenses Summary</h2>
+                <p class="total grand">₹{{ "%.2f"|format(total) }}</p>
+                {% if category_totals %}
+                <ul class="category-list">
+                    {% for cat, amt in category_totals.items()|sort %}
+                    <li><span class="cat-label">{{ cat }}</span> <span class="cat-amount">₹{{ "%.2f"|format(amt) }}</span></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if top_category %}
+                <div class="top-category">
+                    <span class="top-cat-label">Top Spending Category</span>
+                    <span class="top-cat-value">{{ top_category }}: ₹{{ "%.2f"|format(top_amount) }}</span>
+                </div>
+                {% endif %}
+            </section>
+            {% else %}
+            <section class="summary-section">
+                <h2>{{ current_month }} Summary</h2>
+                <p class="total">Total: ₹{{ "%.2f"|format(total) }}</p>
+                {% if category_totals %}
+                <ul class="category-list">
+                    {% for cat, amt in category_totals.items()|sort %}
+                    <li><span class="cat-label">{{ cat }}</span> <span class="cat-amount">₹{{ "%.2f"|format(amt) }}</span></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if top_category %}
+                <div class="top-category">
+                    <span class="top-cat-label">Top Spending Category</span>
+                    <span class="top-cat-value">{{ top_category }}: ₹{{ "%.2f"|format(top_amount) }}</span>
+                </div>
+                {% endif %}
+            </section>
+            {% endif %}
+        </div>
+        {% if category_totals %}
+        <div class="summary-chart-col">
+            <section class="chart-section">
+                <h2>Category Breakdown</h2>
+                <div class="chart-container">
+                    <canvas id="categoryChart" width="300" height="300"></canvas>
+                </div>
+            </section>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if monthly_trends | length > 1 %}
+    <section class="trends-section">
+        <h2>Monthly Spending Trends</h2>
+        <div class="chart-container">
+            <canvas id="trendsChart" width="800" height="300"></canvas>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="expenses-section">
+        <div class="section-header">
+            <h2>Expenses</h2>
+            <div class="section-actions">
+                <a href="/export/csv" class="btn-csv">Export CSV</a>
+                <a href="/add" class="btn-add">+ Add Expense</a>
+            </div>
+        </div>
+        {% if expenses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Note</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.date }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>₹{{ "%.2f"|format(expense.amount) }}</td>
+                    <td>{{ expense.note or '' }}</td>
+                    <td>
+                        <a href="/edit/{{ expense.id }}" class="btn-edit">Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="/delete/{{ expense.id }}" onsubmit="return confirm('Delete this expense?')">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-expenses">No expenses found.</p>
+        {% endif %}
+    </section>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('categoryChart');
+if (ctx) {
+    const data = {{ category_totals | tojson }};
+    const labels = Object.keys(data);
+    const values = Object.values(data);
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                backgroundColor: ['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+}
+
+const trendsCtx = document.getElementById('trendsChart');
+if (trendsCtx) {
+    const months = {{ monthly_trends | map(attribute='month') | list | tojson }};
+    const totals = {{ monthly_trends | map(attribute='total') | list | tojson }};
+    new Chart(trendsCtx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Total Spending',
+                data: totals,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 4,
+                pointBackgroundColor: '#3b82f6',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) { return '₹' + value.toFixed(0); }
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
+{% endblock %}

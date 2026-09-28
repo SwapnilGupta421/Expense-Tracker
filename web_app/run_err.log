@@ -1,0 +1,42 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 938-181-943
+127.0.0.1 - - [31/May/2026 02:16:21] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:16:21] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:16:22] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:16:22] "GET /static/hero.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:16:29] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [31/May/2026 02:16:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:16:30] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:16:30] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:18:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:18:47] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:18:47] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:20:06] "GET /all HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:20:06] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:20:06] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:22:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:22:08] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:22:08] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:22:48] "GET /add HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:22:49] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:22:49] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:23:17] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [31/May/2026 02:23:17] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:23:17] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:23:17] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:23:17] "GET /static/hero.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:26:16] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:26:16] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:26:17] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:26:17] "GET /static/hero.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:26:44] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:26:44] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [31/May/2026 02:28:14] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:28:14] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 02:28:14] "GET /static/ET_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [31/May/2026 02:28:14] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [31/May/2026 02:28:14] "GET /static/hero.jpg HTTP/1.1" 304 -

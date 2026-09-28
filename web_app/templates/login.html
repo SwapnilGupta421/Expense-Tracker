@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-layout">
+    <div class="login-left">
+        <div class="hero-banner">
+            <img src="{{ url_for('static', filename='hero.jpg') }}" alt="Hero Banner">
+        </div>
+    </div>
+    <div class="login-right">
+        <p class="tagline">All your expenses at your fingertips.</p>
+        <div class="auth-form">
+            <h1>Login</h1>
+            <form method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p class="auth-link">Don't have an account? <a href="/register">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
