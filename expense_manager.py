@@ -121,6 +121,7 @@ class ExpenseManager:
     def monthly_expenses(self):
         if not self.expenses:
             print("No expenses found")
+            return
 
         monthly_report = {}
 
@@ -130,7 +131,7 @@ class ExpenseManager:
             month_name=date_object.strftime("%B")
             year_name=date_object.strftime("%Y")
             month_year=year_name+":"+month_name
-            monthly_report[month_year]=monthly_report.get(month_name,0)+expense.get_amount()
+            monthly_report[month_year]=monthly_report.get(month_year,0)+expense.get_amount()
 
         print("\n ==== Monthly expense ====")
         for month_year, total in monthly_report.items():
@@ -168,6 +169,7 @@ class ExpenseManager:
 
             if choice < 1 or choice > len(self.expenses):
                 print("Invalid expense number")
+                return
 
             expense = self.expenses[choice - 1]
             print("\nLeave blank to keep old value\n")
@@ -238,13 +240,9 @@ class ExpenseManager:
 
         plt.pie(amounts,labels=labels,autopct="%1.1f%%")
 
-        plt.show()
-
         plt.savefig("expense_chart.png")
 
-
-
-
+        plt.show()
 
 
 

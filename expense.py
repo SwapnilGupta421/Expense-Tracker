@@ -1,6 +1,6 @@
 from datetime import datetime
 class Expense:
-    def __init__(self, title,amount,category='others',created_at=None):
+    def __init__(self, title,amount,category='Others',created_at=None):
         self.title=title
         self.expense_amount=amount
         self.category=category
